@@ -11,7 +11,6 @@
 #include "SDLBmp.h"
 #include "SDLManager.h"
 
-
 /* Loads the given file on construction */
 SDLBmp::SDLBmp(const std::string& file)
 {
@@ -40,27 +39,11 @@ SDLBmp::SDLBmp(const std::string& file)
 	m_texture = SDL_CreateTextureFromSurface(m_renderer, surface);
 
 	// Create the rect object, using the data from the surface object
-	m_rect.h = 500;
-	m_rect.w = 800;
+	m_rect.h = surface->h;
+	m_rect.w = surface->w;
 	m_rect.x = 0;
 	m_rect.y = 0;
-	x = y = 0.0F;
-	
-	f_rect.h = 10;
-	f_rect.w = 10;
-	f_rect.x = 0;
-	f_rect.y = 0;
-	x = y = 0.0F;
-
-	p_rect.h = 35;
-	p_rect.w = 35;
-	p_rect.x = 0;
-	p_rect.y = 0;
-	x = y = 0.0F;
-
-
-	
-	// Resets our custom floating coordinates
+	x = y = 0.0F; // Resets our custom floating coordinates
 
 	// Free unnecessary CPU data
 	SDL_FreeSurface(surface);
@@ -85,27 +68,4 @@ void SDLBmp::draw()
 
 	// Add object to renderer/window
 	SDL_RenderCopy(m_renderer, m_texture, NULL, &m_rect);
-}
-
-void SDLBmp::drawPlayer()
-{
-	
-	p_rect.x = static_cast<int>(x);
-	p_rect.y = static_cast<int>(y);
-
-	SDL_RenderCopy(m_renderer, m_texture, NULL, &p_rect);
-
-}
-
-void SDLBmp::drawFood()
-{
-	int v1 = rand() % 800 + 1;
-	int v2 = rand() % 500 + 1;
-	if (f_rect.x == p_rect.x || (f_rect.y == p_rect.y))
-	{
-		f_rect.x = v1;
-		f_rect.y = v2;
-	}
-
-	SDL_RenderCopy(m_renderer, m_texture, NULL, &f_rect);
 }

@@ -14,22 +14,20 @@
 class GameManager
 {
 public:
-
-
 	/* Meyer's singleton style instance call */
 	static GameManager& Instance()
 	{
 		static GameManager g;
 		return g;
 	}
-
+	
 	/* Kicks off/is the the gameloop */
 	void play();
 private:
 	GameManager();								// Hidden constructor
 	GameManager(const GameManager&);			// Hidden copy constructor
 	GameManager& operator=(const GameManager&); // Hidden assign operator
-	
+	bool isCollision = false;
 	unsigned int m_window; // pointer to main window
 	float m_lastRender; // Time in seconds since last render
 };

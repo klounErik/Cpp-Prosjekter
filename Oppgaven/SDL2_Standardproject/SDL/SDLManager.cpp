@@ -12,7 +12,6 @@
 #include <sstream>
 #include "SDLManager.h"
 
-
 SDLManager::SDLManager()
 {
 	m_mainWindow = NULL;

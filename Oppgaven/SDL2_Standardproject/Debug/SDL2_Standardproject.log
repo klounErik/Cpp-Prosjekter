@@ -1,3 +1,13 @@
 ﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (SDL2_Standardproject.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  SDLBmp.cpp
-  SDL2_Standardproject.vcxproj -> C:\Users\Jan Erik\Downloads\Oppgaven\Debug\Oppgaven.exe
+  GameManager.cpp
+c:\users\jan erik\documents\github\cpp-prosjekter\oppgaven\sdl2_standardproject\gamemanager.cpp(39): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\jan erik\documents\github\cpp-prosjekter\oppgaven\sdl2_standardproject\gamemanager.cpp(40): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\jan erik\documents\github\cpp-prosjekter\oppgaven\sdl2_standardproject\gamemanager.cpp(71): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\jan erik\documents\github\cpp-prosjekter\oppgaven\sdl2_standardproject\gamemanager.cpp(72): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\jan erik\documents\github\cpp-prosjekter\oppgaven\sdl2_standardproject\gamemanager.cpp(88): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\jan erik\documents\github\cpp-prosjekter\oppgaven\sdl2_standardproject\gamemanager.cpp(89): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\jan erik\documents\github\cpp-prosjekter\oppgaven\sdl2_standardproject\gamemanager.cpp(106): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\jan erik\documents\github\cpp-prosjekter\oppgaven\sdl2_standardproject\gamemanager.cpp(107): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\jan erik\documents\github\cpp-prosjekter\oppgaven\sdl2_standardproject\gamemanager.cpp(123): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\jan erik\documents\github\cpp-prosjekter\oppgaven\sdl2_standardproject\gamemanager.cpp(124): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  SDL2_Standardproject.vcxproj -> C:\Users\Jan Erik\Documents\GitHub\Cpp-Prosjekter\Oppgaven\Debug\Oppgaven.exe

@@ -24,25 +24,15 @@ public:
 
 	/* Adds the image to the master window */
 	void draw();
-	void drawPlayer();
-	void drawFood();
 
 	/* "home brewed" float coordinates, SDL2 uses ints
 		which is a bit too unpresice. */
 	float x;
 	float y;
-	int pPosX = 300;
-	int pPosY = 300;
-
 private:
-
 	SDL_Texture* m_texture; // Pixel data (on GPU)
 	SDL_Renderer* m_renderer; // Pointer to window's renderer.
 	SDL_Rect m_rect; // Used for w/h, placement and cropping.
-	SDL_Rect f_rect;
-	SDL_Rect p_rect;
-
-
 };
 
 #endif

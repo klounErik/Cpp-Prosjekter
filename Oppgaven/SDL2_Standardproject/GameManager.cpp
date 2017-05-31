@@ -10,11 +10,11 @@
 #include "GameManager.h"
 #include "InputManager.h"
 #include "Timer.h"
+#include "Iostream"
 
-int snakeFood = 0;
 
-
-/* Initializes SDL, creates the game window and fires off the timer. */
+ 
+ /* Initializes SDL, creates the game window and fires off the timer. */
 GameManager::GameManager()
 {
 	SDLManager::Instance().init();
@@ -22,17 +22,20 @@ GameManager::GameManager()
 	Timer::Instance().init();
 }
 
-
 /* Kicks off/is the the gameloop */
 void GameManager::play()
-{	
+{
 	bool notGameOver = true;
 
 	// Load bitmaps
+
 	SDLBmp backround("Assets/gfx/sdl2.bmp");
 	SDLBmp player("Assets/gfx/sdl_bro.bmp");
-	SDLBmp food("Assets/gfx/treasure.bmp");
+	SDLBmp apple("Assets/gfx/treasure.bmp");
 
+	player.x = 250;
+	player.y = 175;
+	
 
 
 	// Calculate render frames per second (second / frames) (60)
@@ -47,63 +50,93 @@ void GameManager::play()
 		Timer::Instance().update();
 
 		// Calculate displacement based on deltatime
-		float displacement = 150.F * Timer::Instance().deltaTime();
+		float displacement = 100 * Timer::Instance().deltaTime();
+
 		/* Input Management */
 
 		// Left key
 		if (InputManager::Instance().KeyDown(SDL_SCANCODE_LEFT) ||
 			InputManager::Instance().KeyStillDown(SDL_SCANCODE_LEFT))
 		{
-			player.x -= displacement;
-		}
+			if (player.x <= 0)
+			{
+				player.x = 0;
+			}
+			else
+				player.x -= displacement;
 		
+		}
+
 		// Right key
 		if (InputManager::Instance().KeyDown(SDL_SCANCODE_RIGHT) ||
 			InputManager::Instance().KeyStillDown(SDL_SCANCODE_RIGHT))
 		{
-			player.x += displacement;
+			if (player.x >= 500)
+			{
+				player.x = 500;
+			}
+			else
+				player.x += displacement;
+		
 		}
 
 		// Key up
 		if (InputManager::Instance().KeyDown(SDL_SCANCODE_UP) ||
 			InputManager::Instance().KeyStillDown(SDL_SCANCODE_UP))
 		{
-			player.y -= displacement;
-		}
-
-		// Key down
-		if (InputManager::Instance().KeyDown(SDL_SCANCODE_DOWN) ||
-			InputManager::Instance().KeyStillDown(SDL_SCANCODE_DOWN))
-		{
-			player.y += displacement;
-		}
-
-		// Exit on [Esc], or window close (user X-ed out the window)
-		if (InputManager::Instance().hasExit() || InputManager::Instance().KeyDown(SDL_SCANCODE_ESCAPE))
-		{
-			notGameOver = false;
-		}
-
-		// Update time since last render
-		m_lastRender += Timer::Instance().deltaTime();
-
-		// Check if it's time to render
-		if (m_lastRender >= render_fps)
-		{
-			// Add bitmaps to renderer
-		
+			if (player.y <= 0)
+			{
+				player.y = 0;
+			}
+			else 
+				player.y -= displacement;
+			}
 			
-			
-			backround.draw();
-			player.drawPlayer();
-			food.drawFood();
-			
-			// Render window
-			SDLManager::Instance().renderWindow(m_window);
-			m_lastRender = 0.f;
-		}
+			}
 
-		// Sleep to prevent CPU exthaustion (1ms == 1000 frames per second)
-		SDL_Delay(1);
+
+			// Key down
+			if (InputManager::Instance().KeyDown(SDL_SCANCODE_DOWN) ||
+				InputManager::Instance().KeyStillDown(SDL_SCANCODE_DOWN))
+			{
+				if (player.y >= 350)
+				{
+					player.y = 350;
+				}
+				else
+					player.y += displacement;
+			
+			}
+
+			// Exit on [Esc], or window close (user X-ed out the window)
+			if (InputManager::Instance().hasExit() || InputManager::Instance().KeyDown(SDL_SCANCODE_ESCAPE))
+			{
+				notGameOver = false;
+			}
+
+			// Update time since last render
+			m_lastRender += Timer::Instance().deltaTime();
+
+			// Check if it's time to render
+			if (m_lastRender >= render_fps)
+			{
+				// Add bitmaps to renderer
+				backround.draw();
+				player.draw();
+				apple.draw();
+
+				// Render window
+				SDLManager::Instance().renderWindow(m_window);
+				m_lastRender = 0.f;
+			}
+			std::cout <<"player.x : " << player.x << "player.y : " << player.y << "apple.x: " << apple.x << "apple.y :" << apple.y << std::endl;
+
+			// Sleep to prevent CPU exthaustion (1ms == 1000 frames per second)
+			SDL_Delay(1);
+
+		}
+	
 	}
-}
+
+
+		

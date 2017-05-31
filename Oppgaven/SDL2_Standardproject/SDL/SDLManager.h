@@ -37,13 +37,12 @@ public:
 	/* Creates a SDL window, se SDL documentation for flag options. */
 	int createWindow(
 		const std::string& title,
-		const int& width = 800,
-		const int& height = 500,
+		const int& width = 550,
+		const int& height = 400,
 		const int& x = SDL_WINDOWPOS_CENTERED,
 		const int& y = SDL_WINDOWPOS_CENTERED,
 		const Uint32& flags = SDL_WINDOW_SHOWN,
 		const bool& mainWindow = false
-
 	);
 
 	/* Returns the renderer to the specified window */
@@ -67,6 +66,7 @@ private:
 	SDLManager(); // hidden constructor (singleton)
 	SDLManager(const SDLManager&); // hidden copy constructor 
 	SDLManager& operator=(const SDLManager&); // hidden assignment op.
+
 	std::vector<std::unique_ptr<SDLWindow>> m_windows; // list of windows
 	unsigned int m_mainWindow; // index of main/master window
 };
