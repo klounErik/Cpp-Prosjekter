@@ -27,8 +27,12 @@ public:
 
 	/* "home brewed" float coordinates, SDL2 uses ints
 		which is a bit too unpresice. */
-	float x;
-	float y;
+	
+	int x;
+	int y;
+	int h;
+	int w;
+
 private:
 	SDL_Texture* m_texture; // Pixel data (on GPU)
 	SDL_Renderer* m_renderer; // Pointer to window's renderer.

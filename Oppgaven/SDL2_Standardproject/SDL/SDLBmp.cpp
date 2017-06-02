@@ -43,7 +43,7 @@ SDLBmp::SDLBmp(const std::string& file)
 	m_rect.w = surface->w;
 	m_rect.x = 0;
 	m_rect.y = 0;
-	x = y = 0.0F; // Resets our custom floating coordinates
+	x = y = 0; // Resets our custom floating coordinates
 
 	// Free unnecessary CPU data
 	SDL_FreeSurface(surface);
@@ -65,6 +65,8 @@ void SDLBmp::draw()
 {
 	m_rect.x = static_cast<int>(x); // cast our floats to ints
 	m_rect.y = static_cast<int>(y);
+	m_rect.h = static_cast<int>(h);
+	m_rect.w = static_cast<int>(w);
 
 	// Add object to renderer/window
 	SDL_RenderCopy(m_renderer, m_texture, NULL, &m_rect);
